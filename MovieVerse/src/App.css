@@ -1,0 +1,10 @@
+body{
+    font-family: "Poppins", sans-serif;
+}
+
+.movie-verse{
+    background-image: linear-gradient(90deg, rgba(220, 164, 255, 1) 0%, rgba(255, 44, 120, 1)  100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
