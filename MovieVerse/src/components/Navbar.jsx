@@ -1,6 +1,7 @@
 import like from '../assets/like-icon.png'
 import save from '../assets/save-icon.png'
 import profile from '../assets/user-icon.png'
+import { Link } from 'react-router-dom'
 
 export default function Navbar() {
     return(
