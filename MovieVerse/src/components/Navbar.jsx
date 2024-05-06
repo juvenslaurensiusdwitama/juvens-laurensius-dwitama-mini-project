@@ -7,12 +7,17 @@ export default function Navbar() {
     return(
         <nav className='flex justify-between px-[50px] pt-[17px]'>
             <div className='flex gap-[40px] items-center'>
-                <h1 className='movie-verse text-[44px] font-semibold
-                transition-[150ms] hover:opacity-[0.8] cursor-pointer'
-                >MovieVerse</h1>
+                <Link to={'/'}>
+                    <h1 className='movie-verse text-[44px] font-semibold cursor-pointer'
+                    >MovieVerse</h1>
+                </Link>
                 <ul className='flex gap-[50px] text-[18px]'>
-                    <li className='transition-[150ms] cursor-pointer hover:opacity-[0.7]'>Home</li>
-                    <li className='transition-[150ms] cursor-pointer hover:opacity-[0.7]'>Movies</li>
+                    <Link to={'/'}>
+                        <li className='transition-[150ms] cursor-pointer hover:opacity-[0.7]'>Home</li>
+                    </Link>
+                    <Link to={'/movies'}>
+                        <li className='transition-[150ms] cursor-pointer hover:opacity-[0.7]'>Movies</li>
+                    </Link>
                     <li className='transition-[150ms] cursor-pointer hover:opacity-[0.7]'>Top 5</li>
                     <li className='transition-[150ms] cursor-pointer hover:opacity-[0.7]'>About Us</li>
                 </ul>
