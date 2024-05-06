@@ -19,7 +19,6 @@ export default function Navbar() {
                         <li className='transition-[150ms] cursor-pointer hover:opacity-[0.7]'>Movies</li>
                     </Link>
                     <li className='transition-[150ms] cursor-pointer hover:opacity-[0.7]'>Top 5</li>
-                    <li className='transition-[150ms] cursor-pointer hover:opacity-[0.7]'>About Us</li>
                 </ul>
             </div>
             <div className='flex gap-[38px] items-center'>
