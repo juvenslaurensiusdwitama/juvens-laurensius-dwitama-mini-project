@@ -1,6 +1,7 @@
 import arr from "../../assets/arrow.png"
 import fate from '../../assets/fate.png'
 import avengers from '../../assets/avengers.png'
+import { Link } from "react-router-dom"
 export default function Header() {
     return(
         <header className="flex justify-center mx-[50px] pt-[8px]">
@@ -14,11 +15,13 @@ export default function Header() {
                         <h2 className="text-[32px] font-semibold
                         max-2xl:text-[20px]
                         max-xl:">All news in one place</h2>
-                        <button className="flex gap-[18px] items-center font-semibold text-[20px] bg-[#FF2C78]
-                            p-[12px] rounded-[12px] max-2xl:text-[18px] max-xl:text-[16px]
-                            transition-[150ms] hover:scale-[1.1]">Get Started 
-                            <img src={arr} alt="arrow"/>
-                        </button>
+                        <Link to={'/movies'}>
+                            <button className="flex gap-[18px] items-center font-semibold text-[20px] bg-[#FF2C78]
+                                p-[12px] rounded-[12px] max-2xl:text-[18px] max-xl:text-[16px]
+                                transition-[150ms] hover:scale-[1.1]">Get Started 
+                                <img src={arr} alt="arrow"/>
+                            </button>
+                        </Link>
                     </div>
                     <div className="flex gap-[15px] pe-[52px]">
                         <img src={avengers} alt="" className="h-[440px] w-[310px]
