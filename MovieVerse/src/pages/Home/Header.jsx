@@ -4,7 +4,7 @@ import avengers from '../../assets/avengers.png'
 import { Link } from "react-router-dom"
 export default function Header() {
     return(
-        <header className="flex justify-center mx-[50px] pt-[8px]">
+        <header className="flex justify-center pt-[8px]">
                 <div className="flex justify-center pt-[96px] pb-[80px] bg-[#16073F] rounded-[18px]
                 max-xl:pt-[80px] max-xl:pb-[64px]">
                     <div className="flex flex-col items-start gap-[42px] 
