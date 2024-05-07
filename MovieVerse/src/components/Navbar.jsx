@@ -5,8 +5,9 @@ import { Link } from 'react-router-dom'
 
 export default function Navbar() {
     return(
-        <nav className='flex justify-between px-[50px] pt-[17px]'>
-            <div className='flex gap-[40px] items-center'>
+        <nav className='flex justify-between px-[50px] pt-[17px] max-lg:flex-col
+        max-lg:items-center max-lg:gap-[20px] max-lg:pb-[15px]'>
+            <div className='flex gap-[40px] items-center max-lg:flex-col max-lg:gap-[5px]'>
                 <Link to={'/'}>
                     <h1 className='movie-verse text-[44px] font-semibold cursor-pointer'
                     >MovieVerse</h1>
