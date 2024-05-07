@@ -13,7 +13,7 @@ export default function Main() {
 
     useEffect(()=>{
         fetchMovies()
-    },[result])
+    },[movies])
 
     async function fetchMovies(){
         try{
@@ -48,9 +48,9 @@ export default function Main() {
                     {
                         movies.length > 0 ? 
                             movies.map(item =>
-                                <Link to={`/movies/${item.imdbID}`}>
-                                    <div key={item.imdbID} className="flex flex-col items-center max-w-[250px] gap-[10px]">
-                                        { item.Poster === "N/A" ? 
+                                <Link to={`/movies/${item.imdbID}`} key={item.imdbID}>
+                                    <div className="flex flex-col items-center max-w-[250px] gap-[10px]">
+                                        {item.Poster === "N/A" ? 
                                             <div className="w-[250px] h-[375px] rounded-[12px] bg-slate-700 flex justify-center items-center 
                                             hover:opacity-[0.7] transition-[150ms] hover:scale-[1.02] cursor-pointer">Photo Not Available</div>
                                             : 

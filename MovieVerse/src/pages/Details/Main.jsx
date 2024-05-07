@@ -1,5 +1,7 @@
 export default function Main() {
-    <main>
-        
-    </main>
+    return(
+        <main>
+
+        </main>
+    )
 };
