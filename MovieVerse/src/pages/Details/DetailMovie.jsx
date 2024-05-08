@@ -3,6 +3,7 @@ import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 import Main from "./Main";
 import axios from "axios";
+import './detail.css'
 import { useState, useEffect } from "react";
 
 export default function DetailMovie() {
@@ -10,26 +11,33 @@ export default function DetailMovie() {
     const URL = import.meta.env.VITE_REACT_API_URL
     const API_KEY = import.meta.env.VITE_REACT_API_KEY
     const [details, setDetails] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(()=>{
-        fetchDetails()
-        console.log(details)
+        fetchDetails() 
     },[])
-
+    
     async function fetchDetails(){
         try{
             const response = await axios.get(`${URL}i=${id}${API_KEY}`)
-            // setDetails(response.data)
-            // console.log(response.data)
+            setDetails(response.data)
         }catch(err){
             console.error(err)
+        }
+        finally{
+            setIsLoading(false)
         }
     }
 
     return(
         <div className="bg-[#020510] text-[#FFFFFF]">
             <Navbar/>
-            <Main/>
+            {isLoading ? 
+                <div className="min-h-[90vh] flex justify-center items-center">
+                    <span className="loader"></span>
+                </div>
+                :<Main details={details}/>
+            }
             <Footer/>
         </div>
     )

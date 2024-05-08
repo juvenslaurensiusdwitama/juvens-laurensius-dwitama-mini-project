@@ -23,7 +23,6 @@ export default function Main() {
             }else{
                 setMovies([])
             }
-            
         }catch(err){
             console.error(err)
         }
