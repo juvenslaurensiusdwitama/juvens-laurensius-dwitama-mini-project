@@ -3,7 +3,7 @@ import Swal from 'sweetalert2'
 import save from '../assets/save-icon.png'
 import saved from '../assets/saved.png'
 
-export default function Save(params) {
+export default function Save() {
     const [toggle, setToggle] = useState(false)
     function handleClick(){
         setToggle(!toggle)
