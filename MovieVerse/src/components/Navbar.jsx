@@ -6,7 +6,8 @@ import { Link } from 'react-router-dom'
 export default function Navbar() {
     return(
         <nav className='flex justify-between px-[50px] pt-[17px] max-lg:flex-col
-        max-lg:items-center max-lg:gap-[20px] max-lg:pb-[15px]'>
+        max-lg:items-center max-lg:gap-[20px] max-lg:pb-[15px] sticky top-0 bg-[#020510]
+        z-10'>
             <div className='flex gap-[40px] items-center max-lg:flex-col max-lg:gap-[5px]'>
                 <Link to={'/'}>
                     <h1 className='movie-verse text-[44px] font-semibold cursor-pointer'
@@ -23,10 +24,14 @@ export default function Navbar() {
                 </ul>
             </div>
             <div className='flex gap-[38px] items-center'>
-                <img src={like} alt="like" className='w-[23px] h-[23px] 
-                transition-[150ms] hover:scale-[1.13] hover:opacity-[0.6] cursor-pointer'/>
-                <img src={save} alt="save" className='w-[20px] h-[20px] 
-                transition-[150ms] hover:scale-[1.1] hover:opacity-[0.6] cursor-pointer'/>
+                <Link to={'/liked'}>
+                    <img src={like} alt="like" className='w-[23px] h-[23px] 
+                    transition-[150ms] hover:scale-[1.13] hover:opacity-[0.6] cursor-pointer'/>
+                </Link>
+                <Link to={'/saved'}>
+                    <img src={save} alt="save" className='w-[20px] h-[20px] 
+                    transition-[150ms] hover:scale-[1.1] hover:opacity-[0.6] cursor-pointer'/>
+                </Link>
                 <img src={profile} alt="profile"  className='w-[32px] h-[32px] 
                 transition-[150ms] hover:scale-[1.03] hover:opacity-[0.6] cursor-pointer'/>
             </div>

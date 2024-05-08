@@ -33,12 +33,15 @@ export default function DetailMovie() {
         <div className="bg-[#020510] text-[#FFFFFF]">
             <Navbar/>
             {isLoading ? 
-                <div className="min-h-[90vh] flex justify-center items-center">
-                    <span className="loader"></span>
+                <div className="min-h-[94vh] flex justify-center items-center">
+                    <span className="loader mb-5"></span>
                 </div>
-                :<Main details={details}/>
+                :
+                <div>
+                    <Main details={details}/>
+                    <Footer/>
+                </div>
             }
-            <Footer/>
         </div>
     )
 };
