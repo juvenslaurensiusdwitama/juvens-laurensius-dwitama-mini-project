@@ -18,7 +18,7 @@ export default function Main({details}) {
                         <h2 className="font-medium text-[12px] text-[#9E9E9E]">{details.Runtime}</h2>
                     </div>
                 </div>
-                <div className="max-w-[450px]">
+                <div className="max-w-[450px] max-h-[525px] relative">
                     <h1 className="font-medium text-[32px]">{details.Title}</h1>
                     <div className="pt-[20px] flex flex-col gap-[10px]">
                         <div className="flex gap-[25px]">
@@ -41,6 +41,10 @@ export default function Main({details}) {
                             <h2 className="w-[86px] text-[16px] text-[#9E9E9E]">Actors:</h2>
                             <p className="w-[350px] text-[16px]">{details.Actors}</p>
                         </div>
+                    </div>
+                    <div className="flex items-center absolute bottom-0 right-0">
+                        <Like/>
+                        <Save/>
                     </div>
                 </div>
             </div>
