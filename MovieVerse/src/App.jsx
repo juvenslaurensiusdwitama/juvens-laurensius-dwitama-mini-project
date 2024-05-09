@@ -3,8 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home/Home'
 import Movies from './pages/Movies/Movies'
 import DetailMovie from './pages/Details/DetailMovie'
-import Liked from './pages/LikedAndSaved/Liked'
-import Saved from './pages/LikedAndSaved/Saved'
+import Saved from './pages/Saved/Saved'
 function App() {
   return (
     <>
@@ -12,7 +11,6 @@ function App() {
         <Route path='/' element={<Home/>}/>
         <Route path='/movies' element={<Movies/>}/>
         <Route path='/movies/:id' element={<DetailMovie/>}/>
-        <Route path='/liked' element={<Liked/>}/>
         <Route path='/saved' element={<Saved/>}/>
       </Routes>
     </>

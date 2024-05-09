@@ -2,25 +2,37 @@ import { useState } from 'react'
 import Swal from 'sweetalert2'
 import save from '../assets/save-icon.png'
 import saved from '../assets/saved.png'
+import axios from 'axios'
 
-export default function Save() {
+export default function Save({details}) {
     const [toggle, setToggle] = useState(false)
-    function handleClick(){
+    const URL = `${import.meta.env.VITE_REACT_API_MOCK}saved/`
+    async function handleClick(){
         setToggle(!toggle)
         if(!toggle){
-            Swal.fire({
-                title: 'Saved!',
-                text: 'Press OK to continue',
-                icon: 'success',
-                confirmButtonText: 'OK'
-            })
+            try{
+                await axios.post(URL,details)
+                Swal.fire({
+                    title: 'Saved!',
+                    text: 'Press OK to continue',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                })
+            }catch(err){
+                console.log(err)
+            }
         }else{
-            Swal.fire({
-                title: 'Removed from saved!',
-                text: 'Press OK to continue',
-                icon: 'error',
-                confirmButtonText: 'OK'
-            })
+            try{
+                // await axios.delete(URL+details.imdbID)
+                Swal.fire({
+                    title: 'Removed from saved!',
+                    text: 'Press OK to continue',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                })
+            }catch(err){
+                console.log(err)
+            }
         }
     }
     return (

@@ -1,5 +1,7 @@
-import Like from "../../components/Like";
+import { useEffect } from "react";
 import Save from "../../components/Save";
+import axios from "axios";
+import Comments from "./Comments";
 
 export default function Main({details}) {
     return(
@@ -43,15 +45,13 @@ export default function Main({details}) {
                         </div>
                     </div>
                     <div className="flex items-center absolute bottom-0 right-0">
-                        <Like/>
-                        <Save/>
+                        <Save details={details}/>
                     </div>
                 </div>
             </div>
-
-            <div>
-
-            </div>
+            <Comments/>
+            <button className="mt-[94px] bg-[#2A223F] py-[14px] px-[28px] rounded-[7px]
+            font-medium text-[24px]">Show more movies</button>
         </main>
     )
 };

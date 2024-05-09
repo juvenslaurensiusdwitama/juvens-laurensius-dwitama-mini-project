@@ -1,4 +1,3 @@
-import like from '../assets/like-icon.png'
 import save from '../assets/save-icon.png'
 import profile from '../assets/user-icon.png'
 import { Link } from 'react-router-dom'
@@ -20,14 +19,9 @@ export default function Navbar() {
                     <Link to={'/movies'}>
                         <li className='transition-[150ms] cursor-pointer hover:opacity-[0.7]'>Movies</li>
                     </Link>
-                    <li className='transition-[150ms] cursor-pointer hover:opacity-[0.7]'>Top 5</li>
                 </ul>
             </div>
             <div className='flex gap-[38px] items-center'>
-                <Link to={'/liked'}>
-                    <img src={like} alt="like" className='w-[23px] h-[23px] 
-                    transition-[150ms] hover:scale-[1.13] hover:opacity-[0.6] cursor-pointer'/>
-                </Link>
                 <Link to={'/saved'}>
                     <img src={save} alt="save" className='w-[20px] h-[20px] 
                     transition-[150ms] hover:scale-[1.1] hover:opacity-[0.6] cursor-pointer'/>
