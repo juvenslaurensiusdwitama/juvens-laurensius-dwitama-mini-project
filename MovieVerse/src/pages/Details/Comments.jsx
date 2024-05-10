@@ -8,7 +8,6 @@ export default function Comments({details}) {
     const apiMockURL = import.meta.env.VITE_REACT_API_MOCK
     const [comment, setComment] = useState('') 
     const [data, setData] = useState([])
-    const [id, setId] = useState('')
     useEffect(()=>{
         getComments()
     },[])
@@ -22,7 +21,7 @@ export default function Comments({details}) {
         }
         setComment('')
         try{
-            await axios.post(`${apiMockURL}comments`, newData)
+            await axios.post(`${apiMockURL}/comments`, newData)
         }catch(err){
             console.log(err)
         }finally{
@@ -31,7 +30,7 @@ export default function Comments({details}) {
     }
     async function getComments(){
         try{
-            const response = await axios.get(`${apiMockURL}comments`)
+            const response = await axios.get(`${apiMockURL}/comments`)
             setData(response.data)
         }catch(error){
             console.log(error)
@@ -44,16 +43,13 @@ export default function Comments({details}) {
             <div className="flex flex-col items-start mt-[60px]">
                 <h1 className="text-[24px] mb-[14px]">Comments</h1>
                 <div className="flex flex-col gap-[25px]">
-                    {/* nanti comment yg udh di post dan di get ditampilin disini.
-                    nanti setiap comment di post nambah terus div commentnya.
-                    comment yg udh di post bisa diedit/dihapus. */}
                     {data.map(item => {
                             if(item.imdbID === details.imdbID){
-                                return <Comment item={item} apiMockURL={apiMockURL}/>   
+                                return <Comment item={item} apiMockURL={apiMockURL} 
+                                comment={comment}/>   
                             }
                         }
                     )}
-                    {/* ini bagian input user */}
                     <div className="p-[16px] bg-[#1D1731] flex gap-[16px] rounded-[16px] items-center">
                         <input type="text" className="w-[791px] h-[133px] bg-[#2A223F] rounded-[16px]
                         p-[16px] outline-none"
