@@ -1,5 +1,44 @@
+import { useEffect, useState } from 'react'
 import checkIcon from '../../assets/checkIcon.png'
-export default function Comments() {
+import trashIcon from '../../assets/trash.png'
+import pencilIcon from '../../assets/pencil.png'
+import axios from 'axios'
+import Comment from './Comment'
+export default function Comments({details}) {
+    const apiMockURL = import.meta.env.VITE_REACT_API_MOCK
+    const [comment, setComment] = useState('') 
+    const [data, setData] = useState([])
+    const [id, setId] = useState('')
+    useEffect(()=>{
+        getComments()
+    },[])
+    async function postComment(){
+        const newData = {
+            imdbID: details.imdbID,
+            comment: comment,
+            checkIcon: checkIcon,
+            trashIcon: trashIcon,
+            pencilIcon: pencilIcon,
+        }
+        setComment('')
+        try{
+            await axios.post(`${apiMockURL}comments`, newData)
+        }catch(err){
+            console.log(err)
+        }finally{
+            location.reload()
+        }
+    }
+    async function getComments(){
+        try{
+            const response = await axios.get(`${apiMockURL}comments`)
+            setData(response.data)
+        }catch(error){
+            console.log(error)
+        }
+        
+    }
+    
     return(
         <>
             <div className="flex flex-col items-start mt-[60px]">
@@ -8,12 +47,21 @@ export default function Comments() {
                     {/* nanti comment yg udh di post dan di get ditampilin disini.
                     nanti setiap comment di post nambah terus div commentnya.
                     comment yg udh di post bisa diedit/dihapus. */}
-
+                    {data.map(item => {
+                            if(item.imdbID === details.imdbID){
+                                return <Comment item={item} apiMockURL={apiMockURL}/>   
+                            }
+                        }
+                    )}
                     {/* ini bagian input user */}
                     <div className="p-[16px] bg-[#1D1731] flex gap-[16px] rounded-[16px] items-center">
                         <input type="text" className="w-[791px] h-[133px] bg-[#2A223F] rounded-[16px]
-                        p-[16px] outline-none"/>
-                        <img src={checkIcon} alt="check" className="w-[25px] h-[25px]"/>
+                        p-[16px] outline-none"
+                        value={comment} onChange={(e) => setComment(e.target.value)}
+                        />
+                        <img src={checkIcon} alt="check" className="w-[25px] h-[25px] hover:opacity-[0.6] transition-[150ms] hover:cursor-pointer"
+                        onClick={postComment}
+                        />
                     </div>
                 </div>
             </div>

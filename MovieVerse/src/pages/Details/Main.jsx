@@ -49,7 +49,7 @@ export default function Main({details}) {
                     </div>
                 </div>
             </div>
-            <Comments/>
+            <Comments details={details}/>
             <button className="mt-[94px] bg-[#2A223F] py-[14px] px-[28px] rounded-[7px]
             font-medium text-[24px]">Show more movies</button>
         </main>
