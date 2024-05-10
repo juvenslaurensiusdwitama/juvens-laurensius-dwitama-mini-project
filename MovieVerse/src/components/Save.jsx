@@ -6,7 +6,7 @@ import axios from 'axios'
 
 export default function Save({details}) {
     const [toggle, setToggle] = useState(false)
-    const URL = `${import.meta.env.VITE_REACT_API_MOCK}saved/`
+    const URL = `${import.meta.env.VITE_REACT_API_MOCK}/saved/`
     async function handleClick(){
         setToggle(!toggle)
         if(!toggle){
