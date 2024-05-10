@@ -1,6 +1,4 @@
-import { useEffect } from "react";
 import Save from "../../components/Save";
-import axios from "axios";
 import Comments from "./Comments";
 
 export default function Main({details}) {

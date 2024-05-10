@@ -12,7 +12,7 @@ export default function Comments({details}) {
         getComments()
     },[])
     async function postComment(){
-        const newData = {
+        const newComment = {
             imdbID: details.imdbID,
             comment: comment,
             checkIcon: checkIcon,
@@ -21,7 +21,7 @@ export default function Comments({details}) {
         }
         setComment('')
         try{
-            await axios.post(`${apiMockURL}/comments`, newData)
+            await axios.post(`${apiMockURL}/comments`, newComment)
         }catch(err){
             console.log(err)
         }finally{

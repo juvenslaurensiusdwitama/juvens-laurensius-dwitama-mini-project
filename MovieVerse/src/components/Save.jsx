@@ -1,23 +1,38 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Swal from 'sweetalert2'
 import save from '../assets/save-icon.png'
 import saved from '../assets/saved.png'
 import axios from 'axios'
 
 export default function Save({details}) {
-    const [toggle, setToggle] = useState(false)
+    const [isSaved, setIsSaved] = useState(false)
     const URL = `${import.meta.env.VITE_REACT_API_MOCK}/saved/`
+    // test
+    const [data, setData] = useState([])
+    useEffect(()=>{
+        getLikedMovies()
+    },[])
+    async function getLikedMovies(){
+        try{
+            const response = await axios.get(URL)
+            setData(response.data)
+        }catch(err){
+            console.log(err)
+        }
+    }
+    console.log(data)
+    // test
     async function handleClick(){
-        setToggle(!toggle)
-        if(!toggle){
+        setIsSaved(!isSaved)
+        if(!isSaved){
+            Swal.fire({
+                title: 'Saved!',
+                text: 'Press OK to continue',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            })
             try{
-                await axios.post(URL,details)
-                Swal.fire({
-                    title: 'Saved!',
-                    text: 'Press OK to continue',
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                })
+                await axios.post(URL,{...details})
             }catch(err){
                 console.log(err)
             }
@@ -36,7 +51,7 @@ export default function Save({details}) {
         }
     }
     return (
-        <img src={toggle? saved : save} alt="save" 
+        <img src={isSaved? saved : save} alt="save" id={''}
         className='w-[20px] h-[20px]' onClick={handleClick}/>
     )
 };
