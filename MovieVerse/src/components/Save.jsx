@@ -8,19 +8,23 @@ export default function Save({details}) {
     const [isSaved, setIsSaved] = useState(false)
     const URL = `${import.meta.env.VITE_REACT_API_MOCK}/saved/`
     // test
-    const [data, setData] = useState([])
+    const [id, setId] = useState('')
     useEffect(()=>{
         getLikedMovies()
     },[])
     async function getLikedMovies(){
         try{
             const response = await axios.get(URL)
-            setData(response.data)
+            response.data.forEach(item => {
+                if(item.imdbID === details.imdbID){
+                    setId(item.id)
+                }
+            })
         }catch(err){
             console.log(err)
         }
     }
-    console.log(data)
+    console.log(id)
     // test
     async function handleClick(){
         setIsSaved(!isSaved)
@@ -38,7 +42,7 @@ export default function Save({details}) {
             }
         }else{
             try{
-                // await axios.delete(URL+details.imdbID)
+                await axios.delete(URL+id)
                 Swal.fire({
                     title: 'Removed from saved!',
                     text: 'Press OK to continue',
@@ -51,7 +55,7 @@ export default function Save({details}) {
         }
     }
     return (
-        <img src={isSaved? saved : save} alt="save" id={''}
+        <img src={isSaved? saved : save} alt="save" 
         className='w-[20px] h-[20px]' onClick={handleClick}/>
     )
 };
