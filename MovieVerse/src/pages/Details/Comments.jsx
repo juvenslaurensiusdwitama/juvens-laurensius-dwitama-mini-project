@@ -40,7 +40,7 @@ export default function Comments({details}) {
     
     return(
         <>
-            <div className="flex flex-col items-start mt-[60px]">
+            <div className="flex flex-col items-start mt-[60px] mb-[94px]">
                 <h1 className="text-[24px] mb-[14px]">Comments</h1>
                 <div className="flex flex-col gap-[25px]">
                     {data.map(item => {

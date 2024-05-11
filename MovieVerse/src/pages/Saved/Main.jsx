@@ -42,7 +42,8 @@ export default function Main() {
                 }
             </div>}
             <Link to={'/movies'}>
-                <button className='py-[12px] px-[20px] rounded-[6px] bg-[#2A223F]'>More Movies</button>
+                <button className='py-[12px] px-[20px] rounded-[6px] bg-[#2A223F]
+                hover:opacity-[0.8] transition-[150ms]'>More Movies</button>
             </Link>
         </main>
     )

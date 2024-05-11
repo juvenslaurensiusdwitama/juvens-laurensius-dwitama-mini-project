@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 export default function Card({item}) {
     return(
         <Link to={`/movies/${item.imdbID}`}>
-            <div className="py-[18px] px-[24px] rounded-[12px] bg-[#1D1731]">
+            <div className="py-[18px] px-[24px] rounded-[12px] bg-[#1D1731]
+            hover:opacity-[0.7] transition-[150ms]">
                 {item.Poster === "N/A" ?
                     <div className="w-[264px] h-[330px] rounded-[12px] bg-slate-700 flex justify-center items-center
                     ">Photo Not Available</div>

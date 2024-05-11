@@ -51,10 +51,10 @@ export default function Main({ details, setIsLoading }) {
                     </div>
                 </div>
             </div>
-            <Comments details={details} />
+            <Comments details={details}/>
             <Link to={'/movies'}>
-                <button className="mt-[94px] bg-[#2A223F] py-[14px] px-[28px] rounded-[7px]
-                font-medium text-[24px]">Show more movies</button>
+                <button className=" bg-[#2A223F] py-[14px] px-[28px] rounded-[7px]
+                font-medium text-[24px] hover:opacity-[0.8] transition-[150ms]">Show more movies</button>
             </Link>
         </main>
     )
