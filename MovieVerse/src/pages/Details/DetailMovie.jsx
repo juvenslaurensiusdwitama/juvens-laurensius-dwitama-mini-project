@@ -38,7 +38,7 @@ export default function DetailMovie() {
                 </div>
                 :
                 <div>
-                    <Main details={details}/>
+                    <Main details={details} setIsLoading={setIsLoading}/>
                     <Footer/>
                 </div>
             }

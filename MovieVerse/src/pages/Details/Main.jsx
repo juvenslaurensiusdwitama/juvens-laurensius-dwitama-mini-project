@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom";
 import Save from "../../components/Save";
 import Comments from "./Comments";
 
-export default function Main({details}) {
+export default function Main({details, setIsLoading}) {
     return(
         <main className="pb-[96px] flex flex-col items-center">
             <h1 className="py-[23px] text-center text-[40px]">Movie Details</h1>
@@ -43,13 +44,15 @@ export default function Main({details}) {
                         </div>
                     </div>
                     <div className="flex items-center absolute bottom-0 right-0">
-                        <Save details={details}/>
+                        <Save details={details} setIsLoading={setIsLoading}/>
                     </div>
                 </div>
             </div>
             <Comments details={details}/>
-            <button className="mt-[94px] bg-[#2A223F] py-[14px] px-[28px] rounded-[7px]
-            font-medium text-[24px]">Show more movies</button>
+            <Link to={'/movies'}>
+                <button className="mt-[94px] bg-[#2A223F] py-[14px] px-[28px] rounded-[7px]
+                font-medium text-[24px]">Show more movies</button>
+            </Link>
         </main>
     )
 };

@@ -4,7 +4,7 @@ import save from '../assets/save-icon.png'
 import saved from '../assets/saved.png'
 import axios from 'axios'
 
-export default function Save({details}) {
+export default function Save({details, setIsLoading}) {
     const URL = `${import.meta.env.VITE_REACT_API_MOCK}/saved/`
     const [id, setId] = useState('')
     const [status, setStatus] = useState(save)
@@ -29,18 +29,20 @@ export default function Save({details}) {
     console.log(id)
     async function handleClick(){
         if(status === save){
-            Swal.fire({
-                title: 'Saved!',
-                text: 'Press OK to continue',
-                icon: 'success',
-                confirmButtonText: 'OK'
-            })
             try{
+                setIsLoading(true)
                 await axios.post(URL,{...details, status: saved})
             }catch(err){
                 console.log(err)
-            }finally{
-                location.reload()
+            }
+            finally{
+                setIsLoading(false)
+                Swal.fire({
+                    title: 'Saved!',
+                    text: 'Press OK to continue',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                })
             }
         }else{
             Swal.fire({
@@ -54,8 +56,6 @@ export default function Save({details}) {
                 await axios.delete(URL+id)
             }catch(err){
                 console.log(err)
-            }finally{
-                location.reload()
             }
         }
     }
