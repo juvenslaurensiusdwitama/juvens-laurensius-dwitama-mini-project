@@ -4,10 +4,14 @@ import Home from './pages/Home/Home'
 import Movies from './pages/Movies/Movies'
 import DetailMovie from './pages/Details/DetailMovie'
 import Saved from './pages/Saved/Saved'
+import Login from './pages/Auth/Login'
+import Register from './pages/Auth/Register'
 function App() {
   return (
     <>
       <Routes>
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/register' element={<Register/>}/>
         <Route path='/' element={<Home/>}/>
         <Route path='/movies' element={<Movies/>}/>
         <Route path='/movies/:id' element={<DetailMovie/>}/>
