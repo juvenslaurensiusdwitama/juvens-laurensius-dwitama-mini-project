@@ -9,7 +9,6 @@ export default function Main() {
     const API_KEY = import.meta.env.VITE_REACT_API_KEY
     const [result, setResult] = useState('')
     const [movies, setMovies] = useState([])
-    // const [isLoading, setIsLoading] = useState()
 
     useEffect(()=>{
         fetchMovies()

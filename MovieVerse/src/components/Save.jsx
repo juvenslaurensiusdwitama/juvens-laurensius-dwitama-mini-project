@@ -45,12 +45,6 @@ export default function Save({details, setIsLoading}) {
                 })
             }
         }else{
-            Swal.fire({
-                title: 'Removed from saved!',
-                text: 'Press OK to continue',
-                icon: 'error',
-                confirmButtonText: 'OK'
-            })
             setStatus(save)
             try{
                 await axios.delete(URL+id)
@@ -61,6 +55,6 @@ export default function Save({details, setIsLoading}) {
     }
     return (
         <img src={status} alt="save" 
-        className='w-[20px] h-[20px]' onClick={handleClick}/>
+        className='w-[20px] h-[20px] transition-[150ms] hover:opacity-[0.6] cursor-pointer' onClick={handleClick}/>
     )
 };

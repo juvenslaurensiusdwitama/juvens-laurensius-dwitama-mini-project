@@ -2,15 +2,18 @@ import { Link } from "react-router-dom";
 import Save from "../../components/Save";
 import Comments from "./Comments";
 
-export default function Main({details, setIsLoading}) {
-    return(
+export default function Main({ details, setIsLoading }) {
+    return (
         <main className="pb-[96px] flex flex-col items-center">
             <h1 className="py-[23px] text-center text-[40px]">Movie Details</h1>
-
             <div className="bg-[#0D0620] p-[34px] flex rounded-[15px] gap-[50px]">
                 <div className="flex flex-col gap-[20px]">
+                    {details.Poster === "N/A" ?
+                    <div className="w-[350px] h-[525px] rounded-[12px] bg-slate-700 flex justify-center items-center
+                    ">Photo Not Available</div>
+                    :
                     <img src={details.Poster} alt="poster" className="w-[350px] h-[525px] 
-                    rounded-[12px]"/>
+                    rounded-[12px]"/>}
                     <div className="flex justify-center items-center gap-[16px]">
                         <h2 className="bg-[#676767] text-center px-[8px] py-[2px]
                         font-semibold text-[12px] rounded-[3px]">{details.imdbRating}</h2>
@@ -44,11 +47,11 @@ export default function Main({details, setIsLoading}) {
                         </div>
                     </div>
                     <div className="flex items-center absolute bottom-0 right-0">
-                        <Save details={details} setIsLoading={setIsLoading}/>
+                        <Save details={details} setIsLoading={setIsLoading} />
                     </div>
                 </div>
             </div>
-            <Comments details={details}/>
+            <Comments details={details} />
             <Link to={'/movies'}>
                 <button className="mt-[94px] bg-[#2A223F] py-[14px] px-[28px] rounded-[7px]
                 font-medium text-[24px]">Show more movies</button>
