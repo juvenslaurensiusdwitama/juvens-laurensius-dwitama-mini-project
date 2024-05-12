@@ -1,14 +1,84 @@
+import { useState } from "react";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
+import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold, } from "@google/generative-ai";
+import '../Details/detail.css'
 
 export default function AskAI() {
+    const [prompt, setPrompt] = useState("")
+    const [result, setResult] = useState("")
+    const [loading, setLoading] = useState(false)
+
+    async function runChat() {
+        setLoading(true)
+        try {
+            const genAI = new GoogleGenerativeAI("AIzaSyDy7yNvGjYg1d78FwhrBQqFaSpbIKbWX08");
+            const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro-latest" });
+            const generationConfig = {
+                temperature: 1,
+                topK: 1,
+                topP: 1,
+                maxOutputTokens: 1000,
+            };
+            const safetySettings = [
+                {
+                    category: HarmCategory.HARM_CATEGORY_HARASSMENT,
+                    threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+                },
+                {
+                    category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+                    threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+                },
+                {
+                    category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+                    threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+                },
+                {
+                    category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+                    threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+                },
+            ];
+            const chat = model.startChat({
+                generationConfig,
+                safetySettings,
+            });
+            const result = await chat.sendMessage(prompt);
+            const response = result.response;
+            const text = response.text()
+            setResult(text.split('**'))
+        } catch (error) {
+            console.error(error)
+        }
+        setLoading(false)
+    }
     return (
         <div className="bg-[#020510] text-[#FFFFFF]">
-            <Navbar/>
-            <main>
-                AskAI
-            </main>
-            <Footer/>
+            <Navbar />
+            <div className="flex flex-col items-center py-6 mb-[150px]">
+                <div className="min-h-[600px] min-w-[700px] bg-blue-950 max-w-[700px]
+                max-h-[600px] overflow-y-auto">
+                    <p className="p-4">
+                        {loading ? 
+                        <span class="loader"></span> 
+                        : 
+                        result}
+                    </p>
+                </div>
+                <div className="flex flex-col min-w-[700px] max-w-[700px]">
+                        <textarea type='text'
+                            value={prompt}
+                            onChange={(e) => setPrompt(e.target.value)}
+                            placeholder="Write your prompt..."
+                            className="p-2 text-black min-h-[150px] max-h-[150px]
+                            w-full outline-none bg-blue-100"
+                        ></textarea>
+                        <button onClick={runChat} disabled={loading || prompt.length === 0}
+                            className="bg-blue-900 w-full h-[40px]">
+                            {loading ? "Generating..." : "Generate"}
+                        </button>
+                    </div>
+            </div>
+            <Footer />
         </div>
     )
 };
