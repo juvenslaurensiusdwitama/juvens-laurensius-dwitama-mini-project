@@ -43,13 +43,28 @@ export default function AskAI() {
                 safetySettings,
             });
             const result = await chat.sendMessage(prompt);
-            const response = result.response;
-            const text = response.text()
-            setResult(text.split('**'))
+            const responseText = result.response.text();
+            const formattedResponse = formatResponse(responseText);
+            setResult(formattedResponse)
+            setPrompt("")
+            console.log(formattedResponse)
         } catch (error) {
             console.error(error)
         }
         setLoading(false)
+    }
+    function formatResponse(responseText) {
+        const regex = /(\*\*(.*?)\*\*)|([^*]+)/g;
+        const matches = responseText.match(regex);
+        const formattedText = matches.map((match) => {
+        if (match.startsWith("**")) {
+            const text = match.replace(/\*/g, "");
+            return <p><b>{text}</b></p>;
+        } else {
+            return <p>{match}</p>;
+        }
+        });
+        return <div>{formattedText}</div>;
     }
     return (
         <div className="bg-[#020510] text-[#FFFFFF]">
@@ -58,12 +73,12 @@ export default function AskAI() {
                 <div className="border-2 border-white">
                     <div className="min-h-[600px] min-w-[700px] bg-blue-950 max-w-[700px]
                     max-h-[600px] overflow-y-auto ">
-                        <p className="p-4">
+                        <div className="p-4">
                             {loading ? 
-                            <span class="loader"></span> 
+                            <span className="loader"></span> 
                             : 
                             result}
-                        </p>
+                        </div>
                     </div>
                     <div className="flex flex-col min-w-[700px] max-w-[700px]">
                             <textarea type='text'
