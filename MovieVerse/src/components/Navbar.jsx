@@ -27,6 +27,9 @@ export default function Navbar() {
                     <Link to={'/movies'}>
                         <li className='transition-[150ms] cursor-pointer hover:opacity-[0.7]'>Movies</li>
                     </Link>
+                    <Link to={'/ask-ai'}>
+                        <li className='transition-[150ms] cursor-pointer hover:opacity-[0.7]'>Ask AI</li>
+                    </Link>
                 </ul>
             </div>
             <div className='flex gap-[38px] items-center'>

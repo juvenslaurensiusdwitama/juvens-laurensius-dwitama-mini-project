@@ -8,6 +8,8 @@ import Login from './pages/Auth/Login'
 import Register from './pages/Auth/Register'
 import PrivateRoute from './pages/Auth/PrivateRoute'
 import NotFound from './pages/404 Page/NotFound'
+import AskAI from './pages/AI/AskAI'
+
 function App() {
   return (
     <>
@@ -19,6 +21,7 @@ function App() {
           <Route path='/movies' element={<Movies/>}/>
           <Route path='/movies/:id' element={<DetailMovie/>}/>
           <Route path='/saved' element={<Saved/>}/>
+          <Route path='/ask-ai' element={<AskAI/>}/>
         </Route>
         <Route path='*' element={<NotFound/>}/>
       </Routes>
