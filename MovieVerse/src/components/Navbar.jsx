@@ -1,8 +1,13 @@
 import save from '../assets/save-icon.png'
 import profile from '../assets/user-icon.png'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function Navbar() {
+    const navigate = useNavigate()
+    function handleLogout(){
+        sessionStorage.removeItem('isLogin')
+        navigate('/login')
+    }
     return(
         <nav className='flex justify-between px-[50px] pt-[17px] max-lg:flex-col
         max-lg:items-center max-lg:gap-[20px] max-lg:pb-[15px] sticky top-0 bg-[#020510]
@@ -26,8 +31,12 @@ export default function Navbar() {
                     <img src={save} alt="save" className='w-[20px] h-[20px] 
                     transition-[150ms] hover:scale-[1.1] hover:opacity-[0.6] cursor-pointer'/>
                 </Link>
-                <img src={profile} alt="profile"  className='w-[32px] h-[32px] 
-                transition-[150ms] hover:scale-[1.03] hover:opacity-[0.6] cursor-pointer'/>
+                <div className='relative'>
+                    <img src={profile} alt="profile"  className='w-[32px] h-[32px] 
+                    transition-[150ms] hover:scale-[1.03] hover:opacity-[0.6] cursor-pointer'/>
+                    <button className='absolute right-0 top-[34px] bg-[#D40509] py-1 px-2 rounded-sm
+                    hover:opacity-[0.8]' onClick={handleLogout}>Logout</button>
+                </div>
             </div>
         </nav>
     )
