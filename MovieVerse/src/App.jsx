@@ -7,6 +7,7 @@ import Saved from './pages/Saved/Saved'
 import Login from './pages/Auth/Login'
 import Register from './pages/Auth/Register'
 import PrivateRoute from './pages/Auth/PrivateRoute'
+import NotFound from './pages/404 Page/NotFound'
 function App() {
   return (
     <>
@@ -19,6 +20,7 @@ function App() {
           <Route path='/movies/:id' element={<DetailMovie/>}/>
           <Route path='/saved' element={<Saved/>}/>
         </Route>
+        <Route path='*' element={<NotFound/>}/>
       </Routes>
     </>
   )
