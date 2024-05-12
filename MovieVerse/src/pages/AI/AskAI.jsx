@@ -54,29 +54,31 @@ export default function AskAI() {
     return (
         <div className="bg-[#020510] text-[#FFFFFF]">
             <Navbar />
-            <div className="flex flex-col items-center py-6 mb-[150px]">
-                <div className="min-h-[600px] min-w-[700px] bg-blue-950 max-w-[700px]
-                max-h-[600px] overflow-y-auto">
-                    <p className="p-4">
-                        {loading ? 
-                        <span class="loader"></span> 
-                        : 
-                        result}
-                    </p>
-                </div>
-                <div className="flex flex-col min-w-[700px] max-w-[700px]">
-                        <textarea type='text'
-                            value={prompt}
-                            onChange={(e) => setPrompt(e.target.value)}
-                            placeholder="Write your prompt..."
-                            className="p-2 text-black min-h-[150px] max-h-[150px]
-                            w-full outline-none bg-blue-100"
-                        ></textarea>
-                        <button onClick={runChat} disabled={loading || prompt.length === 0}
-                            className="bg-blue-900 w-full h-[40px]">
-                            {loading ? "Generating..." : "Generate"}
-                        </button>
+            <div className="flex flex-col items-center py-6 mb-[150px] ">
+                <div className="border-2 border-white">
+                    <div className="min-h-[600px] min-w-[700px] bg-blue-950 max-w-[700px]
+                    max-h-[600px] overflow-y-auto ">
+                        <p className="p-4">
+                            {loading ? 
+                            <span class="loader"></span> 
+                            : 
+                            result}
+                        </p>
                     </div>
+                    <div className="flex flex-col min-w-[700px] max-w-[700px]">
+                            <textarea type='text'
+                                value={prompt}
+                                onChange={(e) => setPrompt(e.target.value)}
+                                placeholder="Write your prompt..."
+                                className="p-2 text-black min-h-[150px] max-h-[150px]
+                                w-full outline-none bg-blue-100"
+                            ></textarea>
+                            <button onClick={runChat} disabled={loading || prompt.length === 0}
+                                className="bg-blue-900 w-full h-[40px]">
+                                {loading ? "Generating..." : "Generate"}
+                            </button>
+                    </div>
+                </div>
             </div>
             <Footer />
         </div>
