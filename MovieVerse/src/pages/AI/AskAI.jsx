@@ -89,7 +89,8 @@ export default function AskAI() {
                                 w-full outline-none bg-blue-100"
                             ></textarea>
                             <button onClick={runChat} disabled={loading || prompt.length === 0}
-                                className="bg-blue-900 w-full h-[40px]">
+                                className="bg-blue-900 w-full h-[40px] hover:opacity-[0.8]
+                                transition-[150ms] cursor-pointer">
                                 {loading ? "Generating..." : "Generate"}
                             </button>
                     </div>
