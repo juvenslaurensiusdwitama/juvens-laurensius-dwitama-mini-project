@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
+import Markdown from 'react-markdown'
 import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold, } from "@google/generative-ai";
 import '../Details/detail.css'
 
@@ -51,28 +52,12 @@ export default function AskAI() {
             });
             const result = await chat.sendMessage(prompt);
             const responseText = result.response.text();
-            const formattedResponse = formatResponse(responseText);
-            setResult(formattedResponse)
+            setResult(responseText)
             setPrompt("")
-            console.log(formattedResponse)
         } catch (error) {
             console.error(error)
         }
         setLoading(false)
-    }
-
-    function formatResponse(responseText) {
-        const regex = /(\*\*(.*?)\*\*)|([^*]+)/g;
-        const matches = responseText.match(regex);
-        const formattedText = matches.map((match) => {
-        if (match.startsWith("**")) {
-            const text = match.replace(/\*/g, "");
-            return <p><b>{text}</b></p>;
-        } else {
-            return <p>{match}</p>;
-        }
-        });
-        return <div>{formattedText}</div>;
     }
 
     return (
@@ -87,7 +72,9 @@ export default function AskAI() {
                         <span className="loader"></span> 
                         : 
                         <div className="p-4">
-                            {result}
+                            <Markdown>
+                                {result}
+                            </Markdown>
                         </div>}
                     </div>
                     <div className="flex flex-col min-w-[700px] max-w-[700px]

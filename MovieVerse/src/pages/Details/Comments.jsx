@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react'
 import checkIcon from '../../assets/checkIcon.png'
-import trashIcon from '../../assets/trash.png'
-import pencilIcon from '../../assets/pencil.png'
 import axios from 'axios'
 import Comment from './Comment'
 export default function Comments({details}) {
@@ -15,9 +13,6 @@ export default function Comments({details}) {
         const newComment = {
             imdbID: details.imdbID,
             comment: comment,
-            checkIcon: checkIcon,
-            trashIcon: trashIcon,
-            pencilIcon: pencilIcon,
         }
         setComment('')
         try{

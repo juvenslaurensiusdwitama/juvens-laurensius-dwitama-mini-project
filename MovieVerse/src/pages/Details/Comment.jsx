@@ -1,5 +1,8 @@
 import axios from "axios"
 import { useState } from "react"
+import checkIcon from '../../assets/checkIcon.png'
+import pencilIcon from '../../assets/pencil.png'
+import trashIcon from '../../assets/trash.png'
 export default function Comment({item, apiMockURL}) {
     const [isEdited, setIsEdited] = useState(false)
     const [editValue, setEditValue] = useState(item.comment)
@@ -41,11 +44,11 @@ export default function Comment({item, apiMockURL}) {
             </div>
             }
             <div className='flex flex-col gap-[16px]'>
-                <img src={isEdited? item.checkIcon : item.pencilIcon} alt="pencilIcon" id={item.id} className='w-[25px] h-[25px]
+                <img src={isEdited? checkIcon : pencilIcon} alt="pencilIcon" id={item.id} className='w-[25px] h-[25px]
                 hover:opacity-[0.6] transition-[150ms] hover:cursor-pointer'
                 onClick={editComment}
                 />
-                <img src={item.trashIcon} alt="trashIcon" id={item.id} className='w-[25px] h-[22px]
+                <img src={trashIcon} alt="trashIcon" id={item.id} className='w-[25px] h-[22px]
                 hover:opacity-[0.6] transition-[150ms] hover:cursor-pointer'
                 onClick={deleteComment}
                 />

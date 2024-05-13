@@ -7,10 +7,12 @@ import axios from 'axios'
 export default function Save({details, setIsLoading}) {
     const URL = `${import.meta.env.VITE_REACT_API_MOCK}/saved/`
     const [id, setId] = useState('')
-    const [status, setStatus] = useState(save)
+    const [status, setStatus] = useState(false)
+
     useEffect(()=>{
         getLikedMovies()
     },[])
+
     async function getLikedMovies(){
         try{
             const response = await axios.get(URL)
@@ -23,17 +25,17 @@ export default function Save({details, setIsLoading}) {
                 })
             }
         }catch(err){
-            console.log(err)
+            console.error(err)
         }
     }
-    console.log(id)
+
     async function handleClick(){
-        if(status === save){
+        if(!status){
             try{
                 setIsLoading(true)
-                await axios.post(URL,{...details, status: saved})
+                await axios.post(URL,{...details, status: true})
             }catch(err){
-                console.log(err)
+                console.error(err)
             }
             finally{
                 setIsLoading(false)
@@ -45,16 +47,16 @@ export default function Save({details, setIsLoading}) {
                 })
             }
         }else{
-            setStatus(save)
+            setStatus(false)
             try{
                 await axios.delete(URL+id)
             }catch(err){
-                console.log(err)
+                console.error(err)
             }
         }
     }
     return (
-        <img src={status} alt="save" 
+        <img src={status? saved : save} alt="save" 
         className='w-[20px] h-[20px] transition-[150ms] hover:opacity-[0.6] cursor-pointer' onClick={handleClick}/>
     )
 };
