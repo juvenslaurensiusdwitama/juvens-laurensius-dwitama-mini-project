@@ -29,7 +29,7 @@ export default function Main() {
     
     return (
         <main className="mx-[50px] mt-[13px] mb-[150px] bg-[#0A031C] 
-        pt-[10px] px-[50px] pb-[110px] rounded-[15px] min-h-[65vh]">
+        pt-[10px] px-[50px] pb-[110px] rounded-[15px] min-h-[70vh]">
             <div>
                 <h1 className="font-medium text-[30px] max-md:text-center">Movies</h1>
                 <div className="flex justify-between items-center pt-[19px] max-md:flex-col

@@ -8,6 +8,13 @@ export default function AskAI() {
     const [prompt, setPrompt] = useState("")
     const [result, setResult] = useState("")
     const [loading, setLoading] = useState(false)
+    const templates = {
+        questionOne: 'Top 10 movies general recommendations',
+        questionTwo: 'Highly-rated drama series on Netflix',
+        questionThree: 'Heartwarming movies from ghibli studio',
+        questionFour: 'Top 5 thriller/horror movies',
+        questionFive: 'Best action movies of all time'
+    }
 
     async function runChat() {
         setLoading(true)
@@ -53,6 +60,7 @@ export default function AskAI() {
         }
         setLoading(false)
     }
+
     function formatResponse(responseText) {
         const regex = /(\*\*(.*?)\*\*)|([^*]+)/g;
         const matches = responseText.match(regex);
@@ -66,21 +74,24 @@ export default function AskAI() {
         });
         return <div>{formattedText}</div>;
     }
+
     return (
         <div className="bg-[#020510] text-[#FFFFFF]">
             <Navbar />
-            <div className="flex flex-col items-center py-6 mb-[150px] ">
+            <div className="flex justify-center items-start gap-[30px] py-6 mb-[150px] min-h-[70vh]">
                 <div className="border-2 border-white">
-                    <div className="min-h-[600px] min-w-[700px] bg-blue-950 max-w-[700px]
-                    max-h-[600px] overflow-y-auto ">
+                    <div className={`min-h-[600px] min-w-[700px] max-w-[700px] bg-blue-950 
+                    max-h-[600px] overflow-y-auto ${loading? 'flex justify-center items-center': false}
+                    max-2xl:min-w-[600px] max-2xl:max-w-[600px] max-xl:min-w-[500px] max-xl:max-w-[500px]`}>
+                        {loading ? 
+                        <span className="loader"></span> 
+                        : 
                         <div className="p-4">
-                            {loading ? 
-                            <span className="loader"></span> 
-                            : 
-                            result}
-                        </div>
+                            {result}
+                        </div>}
                     </div>
-                    <div className="flex flex-col min-w-[700px] max-w-[700px]">
+                    <div className="flex flex-col min-w-[700px] max-w-[700px]
+                    max-2xl:min-w-[600px] max-2xl:max-w-[600px] max-xl:min-w-[500px] max-xl:max-w-[500px]">
                             <textarea type='text'
                                 value={prompt}
                                 onChange={(e) => setPrompt(e.target.value)}
@@ -94,6 +105,25 @@ export default function AskAI() {
                                 {loading ? "Generating..." : "Generate"}
                             </button>
                     </div>
+                </div>
+                <div className="flex flex-col gap-[15px] max-xl:max-w-[300px]">
+                    <h1 className="text-[28px] 
+                    ">Templates Question:</h1>
+                    <p className="border-2 border-white p-3 hover:bg-blue-900
+                    transition-[150px] cursor-pointer" onClick={()=>setPrompt(templates.questionOne)}
+                    >{templates.questionOne}</p>
+                    <p className="border-2 border-white p-3 hover:bg-blue-900
+                    transition-[150px] cursor-pointer" onClick={()=>setPrompt(templates.questionTwo)}
+                    >{templates.questionTwo}</p>
+                    <p className="border-2 border-white p-3 hover:bg-blue-900
+                    transition-[150px] cursor-pointer" onClick={()=>setPrompt(templates.questionThree)}
+                    >{templates.questionThree}</p>
+                    <p className="border-2 border-white p-3 hover:bg-blue-900
+                    transition-[150px] cursor-pointer" onClick={()=>setPrompt(templates.questionFour)}
+                    >{templates.questionFour}</p>
+                    <p className="border-2 border-white p-3 hover:bg-blue-900
+                    transition-[150px] cursor-pointer" onClick={()=>setPrompt(templates.questionFive)}
+                    >{templates.questionFive}</p>
                 </div>
             </div>
             <Footer />
