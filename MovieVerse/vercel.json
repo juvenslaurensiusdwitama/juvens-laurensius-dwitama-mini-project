@@ -1,0 +1,33 @@
+{
+    "routes":[
+        {
+            "src": "/",
+            "dest": "/"
+        },
+        {
+            "src": "/movies",
+            "dest": "/movies"
+        },
+        {
+            "src": "/movies/:id",
+            "dest": "/movies/:id"
+        },
+        {
+            "src": "/saved",
+            "dest": "/saved"
+        },
+        {
+            "src": "/ask-ai",
+            "dest": "/ask-ai"
+        },
+        {
+            "src": "/login",
+            "dest": "/login"
+        },
+        {
+            "src": "/register",
+            "dest": "/register"
+        }
+        
+    ]
+}
