@@ -10,7 +10,7 @@ export default function Comment({item, apiMockURL}) {
             try{
                 await axios.put(`${apiMockURL}/comments/${id}`,{...item, comment : editValue})
             }catch(err){
-                console.log(err)
+                console.error(err)
             }finally{
                 location.reload()
             }
@@ -21,7 +21,7 @@ export default function Comment({item, apiMockURL}) {
         try{
             await axios.delete(`${apiMockURL}/comments/${id}`)
         }catch(err){
-            console.log(err)
+            console.error(err)
         }finally{
             location.reload()
         }

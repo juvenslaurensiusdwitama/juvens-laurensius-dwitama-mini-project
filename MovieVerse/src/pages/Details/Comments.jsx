@@ -23,7 +23,7 @@ export default function Comments({details}) {
         try{
             await axios.post(`${apiMockURL}/comments`, newComment)
         }catch(err){
-            console.log(err)
+            console.error(err)
         }finally{
             location.reload()
         }
@@ -33,7 +33,7 @@ export default function Comments({details}) {
             const response = await axios.get(`${apiMockURL}/comments`)
             setData(response.data)
         }catch(error){
-            console.log(error)
+            console.error(error)
         }
         
     }

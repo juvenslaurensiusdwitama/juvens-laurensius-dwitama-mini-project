@@ -16,12 +16,11 @@ export default function Main() {
             const response = await axios.get(URL)
             setData(response.data)
         }catch(err){
-            console.log(err)
+            console.error(err)
         }finally{
             setIsLoading(false)
         }
     }
-    console.log(data)
     
     return(
         <main className='mt-[13px] mx-[50px] mb-[120px] pt-[30px] px-[50px] pb-[74px] 
