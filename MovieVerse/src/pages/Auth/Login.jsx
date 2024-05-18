@@ -28,23 +28,28 @@ export default function Login() {
     console.log()
     return(
         <div className="bg-[#341E51] text-white flex flex-col
-        justify-center items-center min-h-[100vh] ">
-            <h1 className='font-semibold text-[64px] mb-[15px]'>MovieVerse</h1>
+        justify-center items-center min-h-[100vh]">
+            <h1 className='font-semibold text-[64px] mb-[15px]
+            max-sm:text-[32px]'>MovieVerse</h1>
             <form onSubmit={handleLogin} className='w-[500px] h-[516px] rounded-[15px]
-            flex justify-center items-center bg-[#151315]'>
+            flex justify-center items-center bg-[#151315]
+            max-sm:w-[280px] max-sm:h-[280px]'>
                 <div className='flex flex-col items-start'>
-                    <h1 className='font-semibold text-[30px] mb-[12px]'>Login</h1>
+                    <h1 className='font-semibold text-[30px] mb-[12px]
+                    max-sm:text-[18px]'>Login</h1>
                     <input type="email" className='text-black mb-[18px] w-[300px] h-[55px] rounded-[10px]
-                    px-[20px] outline-0' value={email} onChange={handleInput}
+                    px-[20px] outline-0 max-sm:w-[200px] max-sm:h-[35px] max-sm:mb-[6px]' value={email} onChange={handleInput}
                     placeholder='Email' name="email"/>
                     <input type="password" className='text-black mb-[27px] w-[300px] h-[55px] rounded-[10px]
-                    px-[20px] outline-0' value={password} onChange={handleInput}
+                    px-[20px] outline-0 max-sm:w-[200px] max-sm:h-[35px] max-sm:mb-[6px]' value={password} onChange={handleInput}
                     placeholder='Password' name="password"/>
                     <Link to={'/register'}>
-                        <h2 className="mb-[14px] text-[15px] underline">Create Account</h2>
+                        <h2 className="mb-[14px] text-[16px] max-sm:text-[12px] underline
+                        max-sm:mb-[6px]">Create Account</h2>
                     </Link>
                     <input type="submit" className='bg-[#FF2C78] w-[300px] h-[55px] rounded-[10px]
-                    cursor-pointer text-[22px] font-medium transition-[150ms] hover:opacity-[0.8]'/>
+                    cursor-pointer text-[22px] font-medium transition-[150ms] hover:opacity-[0.8]
+                    max-sm:w-[200px] max-sm:h-[35px] max-sm:text-[16px]'/>
                 </div>
             </form>
         </div>
