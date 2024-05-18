@@ -30,18 +30,18 @@ export default function Login() {
         <div className="bg-[#341E51] text-white flex flex-col
         justify-center items-center min-h-[100vh]">
             <h1 className='font-semibold text-[64px] mb-[15px]
-            max-sm:text-[32px]'>MovieVerse</h1>
+            max-sm:text-[30px] max-sm:mb-[8px]'>MovieVerse</h1>
             <form onSubmit={handleLogin} className='w-[500px] h-[516px] rounded-[15px]
             flex justify-center items-center bg-[#151315]
-            max-sm:w-[280px] max-sm:h-[280px]'>
+            max-sm:w-[280px] max-sm:h-[270px]'>
                 <div className='flex flex-col items-start'>
                     <h1 className='font-semibold text-[30px] mb-[12px]
                     max-sm:text-[18px]'>Login</h1>
                     <input type="email" className='text-black mb-[18px] w-[300px] h-[55px] rounded-[10px]
-                    px-[20px] outline-0 max-sm:w-[200px] max-sm:h-[35px] max-sm:mb-[6px]' value={email} onChange={handleInput}
+                    px-[20px] outline-0 max-sm:w-[200px] max-sm:h-[40px] max-sm:mb-[6px]' value={email} onChange={handleInput}
                     placeholder='Email' name="email"/>
                     <input type="password" className='text-black mb-[27px] w-[300px] h-[55px] rounded-[10px]
-                    px-[20px] outline-0 max-sm:w-[200px] max-sm:h-[35px] max-sm:mb-[6px]' value={password} onChange={handleInput}
+                    px-[20px] outline-0 max-sm:w-[200px] max-sm:h-[40px] max-sm:mb-[6px]' value={password} onChange={handleInput}
                     placeholder='Password' name="password"/>
                     <Link to={'/register'}>
                         <h2 className="mb-[14px] text-[16px] max-sm:text-[12px] underline
@@ -49,7 +49,7 @@ export default function Login() {
                     </Link>
                     <input type="submit" className='bg-[#FF2C78] w-[300px] h-[55px] rounded-[10px]
                     cursor-pointer text-[22px] font-medium transition-[150ms] hover:opacity-[0.8]
-                    max-sm:w-[200px] max-sm:h-[35px] max-sm:text-[16px]'/>
+                    max-sm:w-[200px] max-sm:h-[40px] max-sm:text-[16px]'/>
                 </div>
             </form>
         </div>
