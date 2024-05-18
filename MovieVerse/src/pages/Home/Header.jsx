@@ -6,7 +6,7 @@ export default function Header() {
     return(
         <header className="flex justify-center pt-[8px]">
                 <div className="flex justify-center pt-[96px] pb-[80px] bg-[#16073F] rounded-[18px]
-                max-xl:pt-[80px] max-xl:pb-[64px] max-lg:pt-[45px] max-lg:pb-[34px]">
+                max-xl:pt-[80px] max-xl:pb-[64px] max-lg:pt-[45px] max-lg:pb-[34px] max-sm:bg-transparent max-sm:py-[5px]">
                     <div className="flex flex-col items-start gap-[42px] 
                     ps-[66px] max-2xl:gap-[36px] max-xl:gap-[30px] max-lg:ps-[30px] max-md:gap-[22px]">
                         <h1 className="font-semibold text-[64px]
@@ -26,10 +26,10 @@ export default function Header() {
                             </button>
                         </Link>
                     </div>
-                    <div className="flex gap-[15px] pe-[52px] max-lg:pe-[30px]">
+                    <div className="flex gap-[15px] pe-[52px] max-lg:pe-[30px] max-sm:hidden">
                         <img src={avengers} alt="" className="h-[440px] w-[310px]
                         max-2xl:h-[340px] max-2xl:w-[210px] max-xl:h-[235px] max-xl:w-[150px]
-                        max-lg:w-[135px] max-lg:h-[190px]"/>
+                        max-lg:w-[135px] max-lg:h-[190px] max-md:hidden"/>
                         <img src={fate} alt="" className="h-[440px] w-[310px] 
                         max-2xl:h-[340px] max-2xl:w-[210px] max-xl:h-[235px] max-xl:w-[150px]
                         max-lg:w-[135px] max-lg:h-[190px]"/>

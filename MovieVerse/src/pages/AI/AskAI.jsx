@@ -64,7 +64,7 @@ export default function AskAI() {
         <div className="bg-[#020510] text-[#FFFFFF]">
             <Navbar />
             <div className="flex justify-center items-start gap-[30px] py-6 mb-[150px] min-h-[70vh]
-            max-md:flex-col-reverse max-md:items-center max-md:min-h-[25vh]">
+            max-md:flex-col-reverse max-md:items-center max-md:min-h-[25vh] max-sm:mb-[120px]">
                 <div className="border-2 border-white">
                     <div className={`min-h-[600px] min-w-[700px] max-w-[700px] bg-blue-950 
                     max-h-[600px] overflow-y-auto ${loading? 'flex justify-center items-center': false}
@@ -88,7 +88,7 @@ export default function AskAI() {
                                 value={prompt}
                                 onChange={(e) => setPrompt(e.target.value)}
                                 placeholder="Write your prompt..."
-                                className="p-2 text-black min-h-[150px] max-h-[150px]
+                                className="p-2 text-black min-h-[150px] max-h-[150px] max-sm:min-h-[100px] max-sm:max-h-[100px]
                                 w-full outline-none bg-blue-100"
                             ></textarea>
                             <button onClick={runChat} disabled={loading || prompt.length === 0}
